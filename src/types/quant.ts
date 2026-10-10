@@ -157,3 +157,49 @@ export interface PredictionAnalysisResult {
   rows: PredictionRow[];
 }
 
+export type EmotionState = 'Disciplined' | 'FOMO' | 'Hesitant' | 'Revenge Trade' | 'Greedy' | 'Fearful';
+export type SetupQuality = 'A+' | 'A' | 'B' | 'C';
+export type MarketRegime = 'Trending Bull' | 'Trending Bear' | 'Range-Bound' | 'High Volatility';
+
+export interface JournalEntry {
+  id: string;
+  date: string;
+  symbol: string;
+  tradeType: 'LONG' | 'SHORT';
+  entryPrice: number;
+  exitPrice: number;
+  quantity: number;
+  pnl: number;
+  strategyUsed: string;
+  emotionState: EmotionState;
+  setupQuality: SetupQuality;
+  followedPlan: boolean;
+  disciplineRating: number; // 1 to 5
+  marketRegime: MarketRegime;
+  preTradeRationale: string;
+  postTradeReflection: string;
+  lessonsLearned: string;
+  tags: string[];
+  checklistItems: { label: string; checked: boolean }[];
+  associatedBacktestTradeId?: string;
+  createdAt: string;
+}
+
+export type NewsSentiment = 'Positive' | 'Negative' | 'Neutral';
+
+export interface MarketNewsItem {
+  id: string;
+  headline: string;
+  source: string;
+  publishedTime: string;
+  relativeTime: string;
+  summary: string;
+  relatedSymbol: string;
+  category: 'Index' | 'Banking' | 'Tech' | 'Macro' | 'Regulatory' | 'Auto' | 'Energy';
+  sentiment: NewsSentiment;
+  confidenceScore: number; // 0 to 100%
+  isHighImpact?: boolean;
+  impactMagnitude?: 'High' | 'Medium' | 'Low';
+  url?: string;
+}
+

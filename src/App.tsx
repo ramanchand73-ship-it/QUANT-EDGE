@@ -9,7 +9,9 @@ import { RiskView } from './components/RiskAnalytics/RiskView';
 import { MonteCarloView } from './components/MonteCarlo/MonteCarloView';
 import { StatementOfPurposeView } from './components/StatementOfPurpose/StatementOfPurposeView';
 import { PredictionView } from './components/PredictionAnalysis/PredictionView';
-import { Bot, Compass, ShieldAlert, Dna, FileText, ArrowRight, ShieldCheck, BrainCircuit } from 'lucide-react';
+import { TradeJournalView } from './components/TradeJournal/TradeJournalView';
+import { NewsSentimentView } from './components/NewsSentiment/NewsSentimentView';
+import { Bot, Compass, ShieldAlert, Dna, FileText, ArrowRight, ShieldCheck, BrainCircuit, BookOpen, Newspaper } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('bot');
@@ -62,7 +64,11 @@ export default function App() {
         {/* Tab Views */}
         {activeTab === 'bot' && <QuantBotView universe={ASSET_UNIVERSE} />}
 
+        {activeTab === 'journal' && <TradeJournalView universe={ASSET_UNIVERSE} />}
+
         {activeTab === 'prediction' && <PredictionView universe={ASSET_UNIVERSE} />}
+
+        {activeTab === 'news' && <NewsSentimentView universe={ASSET_UNIVERSE} />}
 
         {activeTab === 'optimizer' && (
           <OptimizerView

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Copy, Check, Download, FileText, Award, Terminal, Cpu, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Copy, Check, Download, FileText, Award, Terminal, Cpu, ShieldCheck, CheckCircle2, Newspaper } from 'lucide-react';
+import { NEWS_SOP_TEXT } from '../NewsSentiment/NewsSentimentView';
 
 export const STATEMENT_OF_PURPOSE_TEXT = `QuantEdge: NIFTY 50 Algorithmic Trading Strategy Backtesting Platform
 Statement of Purpose
@@ -14,7 +15,7 @@ The computational backend is decoupled into asynchronous FastAPI microservices c
 
 export const StatementOfPurposeView: React.FC = () => {
   const [copied, setCopied] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<'sop' | 'prediction_sop' | 'pitch' | 'rubric' | 'tech'>('sop');
+  const [activeTab, setActiveTab] = useState<'sop' | 'prediction_sop' | 'news_sop' | 'pitch' | 'rubric' | 'tech'>('sop');
 
   const wordCount = STATEMENT_OF_PURPOSE_TEXT.trim().split(/\s+/).length;
 
@@ -77,7 +78,8 @@ export const StatementOfPurposeView: React.FC = () => {
         <div className="flex items-center gap-2 mt-4 pt-3 border-t border-slate-800/80 overflow-x-auto">
           {[
             { id: 'sop', label: 'Main NIFTY 50 SOP', icon: FileText },
-            { id: 'prediction_sop', label: 'Prediction vs Actual SOP (New)', icon: Cpu, highlight: true },
+            { id: 'prediction_sop', label: 'Prediction vs Actual SOP', icon: Cpu },
+            { id: 'news_sop', label: 'News & Sentiment SOP (New)', icon: Newspaper, highlight: true },
             { id: 'pitch', label: '3-Minute Indian Market Pitch', icon: Terminal },
             { id: 'rubric', label: 'Hackathon Rubric & Criteria', icon: Award },
             { id: 'tech', label: 'NSE Tech Stack & Fast API', icon: Cpu },
@@ -218,6 +220,60 @@ export const StatementOfPurposeView: React.FC = () => {
               <div>• RMSE: Outlier Penalty (₹)</div>
               <div>• MAPE: Relative % Discrepancy</div>
               <div>• Directional Accuracy: Hit Rate %</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* New Section SOP: Live Market News & Sentiment Updates */}
+      {activeTab === 'news_sop' && (
+        <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-6 sm:p-8 space-y-6">
+          <div className="border-b border-slate-800 pb-4 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span className="text-xs font-mono text-indigo-400 tracking-wider uppercase font-semibold">
+                QuantEdge Module Specification | Indian Financial Markets
+              </span>
+              <h1 className="text-2xl font-bold text-white tracking-tight mt-1">
+                Live Market News & Sentiment Updates: Statement of Purpose
+              </h1>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Macro & NLP Sentiment Pipeline | Word Count: ~295 words | First-Person Voice
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-1 rounded bg-slate-800 text-[11px] font-mono text-slate-300 border border-slate-700">
+                NLP Sentiment Scores
+              </span>
+              <span className="px-2 py-1 rounded bg-slate-800 text-[11px] font-mono text-slate-300 border border-slate-700">
+                NSE & RBI Catalyst Tracking
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-4 text-slate-300 text-sm leading-relaxed font-sans">
+            <p>
+              Quantitative backtests model mathematical probabilities, but real-world market movements on the National Stock Exchange (NSE) are frequently catalyzed by breaking macroeconomic developments, corporate earnings, and regulatory actions. To bridge the gap between historical quantitative models and dynamic real-time reality, I am introducing the "Live Market News & Sentiment Updates" module within QuantEdge. The motivation is to provide contextual market awareness, ensuring traders never evaluate quantitative strategies or price predictions in an informational vacuum.
+            </p>
+
+            <p>
+              The module streams near-real-time financial dispatches from verified Indian market feeds and financial news APIs, covering the NIFTY 50 benchmark, sectoral shifts, RBI monetary policy announcements, SEBI regulatory updates, and constituent earnings. Using natural language processing (NLP) and sentiment classification pipelines in Python, our backend processes incoming headlines and summaries to assign a transparent sentiment label—Positive, Neutral, or Negative—alongside a classification confidence score.
+            </p>
+
+            <p>
+              Through an auto-refreshing dashboard, users can filter stories by specific NIFTY 50 equities, sectors, sentiment polarity, and verified news sources. The interface visualizes aggregate market sentiment distributions, provides stock-wise sentiment heat breakdowns, and triggers visual badges for high-impact catalyst headlines. Crucially, this sentiment feed links directly with our "Prediction vs Actual Price Analysis" module, allowing users to cross-reference unexpected model forecast errors against breaking intraday news events.
+            </p>
+
+            <p className="font-medium text-slate-200">
+              Architected via containerized FastAPI microservices and deployed seamlessly with our Docker stack, this feature is strictly built as a contextual decision-support tool, not an automated buy-sell recommendation engine. While news sentiment frequently exacerbates short-term volatility, sentiment alone cannot replace quantitative risk budgeting, position sizing, or disciplined stop-loss management. By delivering verifiable news aggregation and objective sentiment metrics, QuantEdge empowers Indian investors and students to evaluate market catalysts responsibly without succumbing to sensationalist financial noise.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-lg bg-slate-950/60 border border-slate-800 space-y-2 text-xs font-mono">
+            <div className="text-slate-400 uppercase font-bold text-[11px]">Core Architectural & NLP Pipeline Elements:</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-slate-300 pt-1">
+              <div>• FinBERT / DistilRoBERTa Sentiment Pipeline</div>
+              <div>• Live RSS & NSE Regulatory Ingestion</div>
+              <div>• Cross-Referenced with Prediction Delta Engine</div>
             </div>
           </div>
         </div>

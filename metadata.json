@@ -1,6 +1,8 @@
 {
   "name": "QuantEdge — NIFTY 50 Algorithmic Strategy Backtesting Platform",
-  "description": "NSE & NIFTY 50 Quantitative Strategy Backtester with Indian Market Friction (STT, Brokerage), Walk-Forward Validation, and Risk Analytics.",
+  "description": "NSE & NIFTY 50 Quantitative Strategy Backtester with Indian Market Friction (STT, Brokerage), Walk-Forward Validation, Trade Journal, Prediction Audit, and Live Market News Sentiment.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

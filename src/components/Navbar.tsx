@@ -1,7 +1,7 @@
 import React from 'react';
-import { Bot, Compass, ShieldAlert, Dna, FileText, Activity, BrainCircuit } from 'lucide-react';
+import { Bot, Compass, ShieldAlert, Dna, FileText, Activity, BrainCircuit, BookOpen, Newspaper } from 'lucide-react';
 
-export type ActiveTab = 'bot' | 'prediction' | 'optimizer' | 'risk' | 'monte_carlo' | 'sop';
+export type ActiveTab = 'bot' | 'journal' | 'prediction' | 'news' | 'optimizer' | 'risk' | 'monte_carlo' | 'sop';
 
 interface NavbarProps {
   activeTab: ActiveTab;
@@ -44,7 +44,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           <nav className="hidden md:flex items-center gap-1">
             {[
               { id: 'bot', label: 'Strategy Backtester', icon: Bot, badge: 'Live' },
+              { id: 'journal', label: 'Trade Journal', icon: BookOpen, badge: 'Notes' },
               { id: 'prediction', label: 'Prediction vs Actual', icon: BrainCircuit, badge: 'ML' },
+              { id: 'news', label: 'News & Sentiment', icon: Newspaper, badge: 'Feed' },
               { id: 'optimizer', label: 'MPT Optimizer', icon: Compass },
               { id: 'risk', label: 'Risk & VaR', icon: ShieldAlert },
               { id: 'monte_carlo', label: 'Monte Carlo', icon: Dna },
@@ -105,7 +107,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex md:hidden items-center gap-1 overflow-x-auto py-2 no-scrollbar border-t border-slate-800/60">
           {[
             { id: 'bot', label: 'Bot', icon: Bot },
-            { id: 'prediction', label: 'ML Prediction', icon: BrainCircuit },
+            { id: 'journal', label: 'Journal', icon: BookOpen },
+            { id: 'prediction', label: 'ML Pred', icon: BrainCircuit },
+            { id: 'news', label: 'News', icon: Newspaper },
             { id: 'optimizer', label: 'MPT', icon: Compass },
             { id: 'risk', label: 'Risk', icon: ShieldAlert },
             { id: 'monte_carlo', label: 'Monte Carlo', icon: Dna },
